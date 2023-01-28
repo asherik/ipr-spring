@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1674908948412-1" author="agabekov.aa@esphere.ru (generated)">
+        <createTable tableName="post">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="post_pk"/>
+            </column>
+            <column name="title" type="VARCHAR"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674908948412-2" author="agabekov.aa@esphere.ru (generated)">
+        <createTable tableName="post_comment">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="post_comment_pk"/>
+            </column>
+            <column name="post_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="review" type="VARCHAR(400)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674908948412-3" author="agabekov.aa@esphere.ru (generated)">
+        <addForeignKeyConstraint baseColumnNames="post_id" baseTableName="post_comment" constraintName="post_comment_fk"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="post"/>
+    </changeSet>
+
+</databaseChangeLog>

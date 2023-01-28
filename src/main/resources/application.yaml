@@ -1,1 +1,10 @@
+server:
+  port: 8080
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ipr
+    username: postgres
+    password: password
+  liquibase:
+    change-log: classpath:db/changelog.xml
