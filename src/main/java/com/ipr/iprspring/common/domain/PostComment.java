@@ -1,4 +1,4 @@
-package common.domain;
+package com.ipr.iprspring.common.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
