@@ -1,7 +1,10 @@
 package com.ipr.iprspring.fixProblemNplusOne.domain;
 
+import com.ipr.iprspring.common.enums.CommentType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -30,4 +33,7 @@ public class PostCommentFixNplusOne {
     @Column(name = "review", length = 400)
     private String review;
 
+    @Column(name = "type")
+    @Enumerated(EnumType.ORDINAL)
+    private CommentType commentType;
 }
