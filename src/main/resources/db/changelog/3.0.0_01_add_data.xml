@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <!-- post data -->
+    <changeSet id="post-data" author="ase">
+        <insert tableName="post">
+            <column name="id" value="070e2393-f46a-4f97-891d-2498cc41da18"/>
+            <column name="title" value="High-Performance Java Persistence - Part 2"/>
+        </insert>
+    </changeSet>
+
+    <!-- post_comment data -->
+    <changeSet id="post_comment-data" author="ase">
+        <insert tableName="post_comment">
+            <column name="id" value="934f12d6-4c57-4394-b390-2d5cba21716a"/>
+            <column name="post_id" value="070e2393-f46a-4f97-891d-2498cc41da18"/>
+            <column name="review" value="Must-read for Java developers"/>
+            <column name="type" value="NULL"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
