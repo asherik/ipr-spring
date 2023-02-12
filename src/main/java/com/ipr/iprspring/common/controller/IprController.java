@@ -59,4 +59,27 @@ public class IprController {
         commonService.saveEnumFieldInDb(idComment, commentType);
         return ResponseEntity.ok().build();
     }
+
+    /**
+     * Получение кеширвоаных данных spring.
+     *
+     * @param idComment id комментария
+     * @return {@link ResponseEntity}
+     */
+    @GetMapping("/take-cached-comment")
+    public ResponseEntity<String> takeCachedComment(@RequestParam @Valid @NonNull UUID idComment) {
+        return ResponseEntity.ok(commonService.takeCachedComment(idComment));
+    }
+
+    /**
+     * Практика сброса кеширвонных данных.
+     *
+     * @param idComment id комментария
+     * @return {@link ResponseEntity}
+     */
+    @PutMapping("/evict-cached-comment")
+    public ResponseEntity<Void> evictCachedComment(@RequestParam @Valid @NonNull UUID idComment) {
+        commonService.evictCachedComment(idComment);
+        return ResponseEntity.ok().build();
+    }
 }

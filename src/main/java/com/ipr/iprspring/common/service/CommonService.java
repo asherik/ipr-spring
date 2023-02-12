@@ -14,4 +14,18 @@ public interface CommonService {
      */
     void saveEnumFieldInDb(UUID commentId, CommentType commentType);
 
+
+    /**
+     * Получение кеширвоаных данных spring.
+     *
+     * @param commentId id комментария
+     */
+    String takeCachedComment(UUID commentId);
+
+    /**
+     * Практика сброса кеширвонных данных.
+     *
+     * @param commentId id комментария
+     */
+    void evictCachedComment(UUID commentId);
 }
