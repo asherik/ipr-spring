@@ -31,7 +31,7 @@ N+1:
    ```
 Сохранение ENUM в бд:
 
-    Cохранение енам в виде числа:
+   Cохранение енам в виде числа:
    ```
    PUT http://localhost:8080/update-comment?idComment=934f12d6-4c57-4394-b390-2d5cba21716a&commentType=SECOND
    ```
