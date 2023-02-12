@@ -25,7 +25,7 @@
    ```
    GET http://localhost:8080/nplusone?idComment=d6b31651-7a26-4097-8df6-4a4ee430b8b5
    ```
-   N+1 решенная пробелема:
+   N+1 решенная проблема:
    ```
    GET http://localhost:8080/nplusone-resolve?idComment=d6b31651-7a26-4097-8df6-4a4ee430b8b5
    ```
