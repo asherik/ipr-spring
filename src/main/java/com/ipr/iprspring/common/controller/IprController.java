@@ -1,5 +1,6 @@
 package com.ipr.iprspring.common.controller;
 
+import com.ipr.iprspring.common.annotations.Audit;
 import com.ipr.iprspring.common.enums.CommentType;
 import com.ipr.iprspring.common.service.CommonService;
 import com.ipr.iprspring.common.service.NplusOneService;
@@ -66,6 +67,7 @@ public class IprController {
      * @param idComment id комментария
      * @return {@link ResponseEntity}
      */
+    @Audit
     @GetMapping("/take-cached-comment")
     public ResponseEntity<String> takeCachedComment(@RequestParam @Valid @NonNull UUID idComment) {
         return ResponseEntity.ok(commonService.takeCachedComment(idComment));
