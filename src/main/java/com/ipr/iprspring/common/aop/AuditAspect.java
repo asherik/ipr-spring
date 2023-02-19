@@ -1,5 +1,6 @@
 package com.ipr.iprspring.common.aop;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,8 +14,9 @@ import java.util.Arrays;
 @Slf4j
 public class AuditAspect {
 
+    @SneakyThrows
     @Around("@annotation(com.ipr.iprspring.common.annotations.Audit)")
-    public Object audit(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object audit(ProceedingJoinPoint joinPoint) {
         log.info("Параметры запроса: {}", Arrays.toString(joinPoint.getArgs()));
         Object result = joinPoint.proceed();
         log.info("Ответ: {}", result);
