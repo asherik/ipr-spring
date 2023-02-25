@@ -1,6 +1,5 @@
 package com.ipr.iprspring.common.service.impl;
 
-import com.ipr.iprspring.common.exception.NotFoundException;
 import com.ipr.iprspring.common.service.IsolateService;
 import com.ipr.iprspring.fixProblemNplusOne.repository.PostCommentFixNplusOneRepository;
 import lombok.AllArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigInteger;
 import java.util.UUID;
 
 @Service
@@ -39,11 +37,8 @@ public class IsolateServiceImpl implements IsolateService {
      * @param commentId id комментария
      */
     private void updateView(UUID commentId) {
-        var comment = postCommentFixNplusOneRepository.findById(commentId)
-                .orElseThrow(NotFoundException::new);
-        var currentView = comment.getView();
-        comment.setView(BigInteger.valueOf(currentView.longValue() + 1L));
-        postCommentFixNplusOneRepository.save(comment);
+        postCommentFixNplusOneRepository.updateCount(commentId);
+        var count = postCommentFixNplusOneRepository.getCount(commentId);
+        log.info("текущее кол-во просмотров: {}", count);
     }
-
 }
