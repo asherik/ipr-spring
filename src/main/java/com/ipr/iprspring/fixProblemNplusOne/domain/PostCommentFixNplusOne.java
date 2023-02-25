@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.util.UUID;
 
 @Table(name = "post_comment")
@@ -36,4 +37,7 @@ public class PostCommentFixNplusOne {
     @Column(name = "type")
     @Enumerated(EnumType.ORDINAL)
     private CommentType commentType;
+
+    @Column(name = "view")
+    private BigInteger view;
 }

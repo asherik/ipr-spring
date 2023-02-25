@@ -21,7 +21,6 @@ public class CommonServiceImpl implements CommonService {
 
     private final PostCommentFixNplusOneRepository postCommentFixNplusOneRepository;
 
-
     @Override
     public void saveEnumFieldInDb(UUID commentId, CommentType commentType) {
         var postComment = postCommentFixNplusOneRepository.findById(commentId)
