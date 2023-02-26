@@ -31,6 +31,10 @@ public class IprIsolationController {
             isolateService.changeViewForCommentReadCommitted(idComment);
         } else if (isolation.equals(Isolation.REPEATABLE_READ.name())) {
             isolateService.changeViewForCommentRepeatableRead(idComment);
+        } else if (isolation.equals(Isolation.READ_UNCOMMITTED.name())) {
+            isolateService.changeViewForCommentReadUncommitted(idComment);
+        } else if (isolation.equals(Isolation.SERIALIZABLE.name())) {
+            isolateService.changeViewForCommentSerializable(idComment);
         }
         return ResponseEntity.ok().build();
     }

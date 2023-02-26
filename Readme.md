@@ -35,3 +35,9 @@
    ```
    PUT http://localhost:8080/update-comment?idComment=934f12d6-4c57-4394-b390-2d5cba21716a&commentType=SECOND
    ```
+
+## Изучение изоляций
+
+   PUT http://localhost:8080/change-comment-view?idComment=934f12d6-4c57-4394-b390-2d5cba21716a&isolation=READ_COMMITTED
+
+   для isolation можно указать в рамках какого типа изоляции будет транзакция на изменение счетчика работать

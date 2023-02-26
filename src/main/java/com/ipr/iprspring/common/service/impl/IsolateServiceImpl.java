@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
@@ -18,16 +17,28 @@ public class IsolateServiceImpl implements IsolateService {
 
     private final PostCommentFixNplusOneRepository postCommentFixNplusOneRepository;
 
-    //уровень изоляции READ_COMMITTED, как и propagation REQUIRED и так по дефолту, указал для наглядности
+    //уровень изоляции READ_COMMITTED и так по дефолту, указал для наглядности
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED)
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public void changeViewForCommentReadCommitted(UUID commentId) {
         updateView(commentId);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ)
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public void changeViewForCommentRepeatableRead(UUID commentId) {
+        updateView(commentId);
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
+    public void changeViewForCommentReadUncommitted(UUID commentId) {
+        updateView(commentId);
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public void changeViewForCommentSerializable(UUID commentId) {
         updateView(commentId);
     }
 
